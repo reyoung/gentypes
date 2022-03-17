@@ -15,3 +15,9 @@ func (n Notification) Done() {
 func (n Notification) Wait() {
 	<-n.Chan()
 }
+
+func NewNotification() Notification {
+	return Notification{NewPromise(func() struct{} {
+		return struct{}{}
+	})}
+}
