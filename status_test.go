@@ -7,7 +7,7 @@ import (
 )
 
 func TestStatus(t *testing.T) {
-	require.Equal(t, StatusTransform(NewStatus(1, nil), func(t int) (int, error) {
+	require.Equal(t, StatusChain(NewStatus(1, nil), func(t int) (int, error) {
 		return t * 2, nil
 	}).Value(), 2)
 }

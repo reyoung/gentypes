@@ -56,7 +56,7 @@ func RecoverError(err *error) {
 	*err = e
 }
 
-func StatusTransform[T1 any, T2 any](t1 Status[T1], transform func(T1) (T2, error)) Status[T2] {
+func StatusChain[T1 any, T2 any](t1 Status[T1], transform func(T1) (T2, error)) Status[T2] {
 	if t1.err != nil {
 		return NewErrorStatus[T2](t1.err)
 	} else {

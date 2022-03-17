@@ -35,7 +35,7 @@ func (o Optional[T]) OrElse(other T) T {
 	return other
 }
 
-func OptionalTransform[T1 any, T2 any](o Optional[T1], f func(T1) T2) Optional[T2] {
+func OptionalChain[T1 any, T2 any](o Optional[T1], f func(T1) T2) Optional[T2] {
 	if o.hasValue {
 		return Some(f(o.value))
 	}
