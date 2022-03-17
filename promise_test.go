@@ -7,10 +7,10 @@ import (
 )
 
 func TestPromise(t *testing.T) {
-	promise := NewPromise(func() (int, error) {
-		return 10, nil
+	promise := NewPromise(func() int {
+		return 10
 	})
 	promise.Apply()
-	status := StatusFlatten(ChanHead(promise.Result()))
+	status := ChanHead(promise.Result())
 	require.Equal(t, 10, status.Value())
 }
