@@ -63,3 +63,11 @@ func StatusThen[T1 any, T2 any](t1 Status[T1], transform func(T1) (T2, error)) S
 		return NewStatus(transform(t1.value))
 	}
 }
+
+func StatusFlatten[T any](val Status[Status[T]]) Status[T] {
+	if val.err != nil {
+		return NewErrorStatus[T](val.err)
+	} else {
+		return val.value
+	}
+}

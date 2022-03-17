@@ -11,6 +11,6 @@ func TestPromise(t *testing.T) {
 		return 10, nil
 	})
 	promise.Apply()
-	status := ChanHead(promise.Result()).Value()
+	status := StatusFlatten(ChanHead(promise.Result()))
 	require.Equal(t, 10, status.Value())
 }
