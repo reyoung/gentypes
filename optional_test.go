@@ -12,5 +12,5 @@ func TestOptional(t *testing.T) {
 	require.True(t, opt.IsSome())
 	require.Equal(t, 10, opt.Value())
 	require.Equal(t, 10, opt.OrElse(20))
-	require.Equal(t, 20, OptionalThen(opt, func(x int) int { return x * 2 }).Value())
+	require.Equal(t, 20, OptionalTransform(opt, func(x int) int { return x * 2 }).Value())
 }
