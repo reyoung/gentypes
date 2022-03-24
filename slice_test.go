@@ -11,4 +11,6 @@ func TestSliceTransform(t *testing.T) {
 		return v * 2
 	})
 	require.Equal(t, []int{2, 4, 6}, result)
+
+	require.Equal(t, []string{"a", "b", "c"}, SliceSort([]string{"b", "c", "a"}))
 }
